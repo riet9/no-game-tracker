@@ -1,7 +1,7 @@
 {
   "telegram": {
     "bot_token": "replace_with_new_token",
-    "chat_id": "2047828228"
+    "chat_id": "replace_with_chat_id"
   },
   "settings": {
     "poll_interval_seconds": 10,
@@ -86,15 +86,6 @@
       ],
       "title_keywords": [
         "fortnite"
-      ]
-    },
-    {
-      "name": "Generic Game",
-      "process_names": [
-        "game.exe"
-      ],
-      "title_keywords": [
-        "game"
       ]
     },
     {
