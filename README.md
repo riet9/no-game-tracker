@@ -78,6 +78,20 @@ The control panel lets you:
 - export CSV manually
 - minimize to the system tray
 
+## Screenshots
+
+### Dashboard
+
+![No Game Tracker dashboard](assets/ui_dashboard.png)
+
+### Game Editor
+
+![No Game Tracker game editor](assets/ui_game_editor.png)
+
+### Telegram Bot
+
+![No Game Tracker Telegram bot](assets/telegram_bot.png)
+
 ## Telegram Commands
 
 Send these commands to your bot from the configured `chat_id`:
