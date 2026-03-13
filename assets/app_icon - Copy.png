@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="shieldGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#173423"/>
+      <stop offset="100%" stop-color="#0d6b52"/>
+    </linearGradient>
+    <linearGradient id="padGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#eef4f0"/>
+      <stop offset="100%" stop-color="#d8efe6"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="256" height="256" rx="52" fill="#eef4f0"/>
+
+  <path
+    d="M128 24 56 54v62c0 58 31 94 72 116 41-22 72-58 72-116V54z"
+    fill="url(#shieldGrad)"
+  />
+
+  <path
+    d="M77 114c4-18 17-30 34-30h34c17 0 30 12 34 30l8 34c3 14-7 28-22 28-8 0-14-3-19-10l-10-12h-16l-10 12c-5 7-11 10-19 10-15 0-25-14-22-28z"
+    fill="url(#padGrad)"
+  />
+
+  <rect x="95" y="116" width="24" height="8" rx="4" fill="#0d6b52"/>
+  <rect x="103" y="108" width="8" height="24" rx="4" fill="#0d6b52"/>
+  <circle cx="152" cy="118" r="6" fill="#0d6b52"/>
+  <circle cx="168" cy="132" r="6" fill="#0d6b52"/>
+
+  <path d="M128 42v24" stroke="#d8efe6" stroke-width="8" stroke-linecap="round" opacity="0.95"/>
+  <path d="M128 182v18" stroke="#d8efe6" stroke-width="8" stroke-linecap="round" opacity="0.95"/>
+</svg>

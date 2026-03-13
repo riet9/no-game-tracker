@@ -1,0 +1,127 @@
+{
+  "telegram": {
+    "bot_token": "replace_with_new_token",
+    "chat_id": "2047828228"
+  },
+  "settings": {
+    "poll_interval_seconds": 10,
+    "close_grace_polls": 2,
+    "track_background_games": true,
+    "track_foreground_games": true,
+    "telegram_on_state_change": true,
+    "telegram_commands_enabled": true
+  },
+  "excluded_processes": [
+    "dwm.exe",
+    "applicationframehost.exe",
+    "shellexperiencehost.exe",
+    "explorer.exe",
+    "python.exe",
+    "pythonw.exe",
+    "codex.exe",
+    "code.exe",
+    "chrome.exe",
+    "msedge.exe",
+    "firefox.exe",
+    "opera.exe",
+    "discord.exe",
+    "telegram.exe",
+    "powershell.exe",
+    "windowsterminal.exe",
+    "cmd.exe",
+    "notepad.exe",
+    "notepad++.exe",
+    "winword.exe",
+    "powerpnt.exe",
+    "excel.exe",
+    "onenote.exe",
+    "outlook.exe",
+    "acrord32.exe",
+    "mspaint.exe",
+    "devenv.exe",
+    "idea64.exe",
+    "pycharm64.exe",
+    "studio64.exe",
+    "obsidian.exe",
+    "slack.exe",
+    "steamwebhelper.exe"
+  ],
+  "excluded_window_keywords": [
+    "downloads",
+    "documents",
+    "desktop",
+    "powerpoint",
+    "microsoft word",
+    "notes",
+    "notepad"
+  ],
+  "launcher_processes": [
+    "steam.exe",
+    "epicgameslauncher.exe"
+  ],
+  "games": [
+    {
+      "name": "Counter-Strike 2",
+      "process_names": [
+        "cs2.exe"
+      ],
+      "title_keywords": [
+        "counter-strike 2",
+        "cs2"
+      ]
+    },
+    {
+      "name": "Dota 2",
+      "process_names": [
+        "dota2.exe"
+      ],
+      "title_keywords": [
+        "dota 2"
+      ]
+    },
+    {
+      "name": "Fortnite",
+      "process_names": [
+        "fortniteclient-win64-shipping.exe"
+      ],
+      "title_keywords": [
+        "fortnite"
+      ]
+    },
+    {
+      "name": "Generic Game",
+      "process_names": [
+        "game.exe"
+      ],
+      "title_keywords": [
+        "game"
+      ]
+    },
+    {
+      "name": "Pirated Skyrim",
+      "process_names": [
+        "skyrimse.exe",
+        "skyrim.exe"
+      ],
+      "title_keywords": [
+        "the elder scrolls v",
+        "skyrim",
+        "fitgirl",
+        "repack"
+      ]
+    },
+    {
+      "name": "Pirated GTA V",
+      "process_names": [
+        "gta5.exe",
+        "playgtav.exe"
+      ],
+      "title_keywords": [
+        "grand theft auto v",
+        "gta v",
+        "fitgirl",
+        "reloaded"
+      ]
+    }
+  ]
+}

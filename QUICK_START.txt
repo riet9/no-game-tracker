@@ -1,0 +1,42 @@
+NO GAME TRACKER - QUICK START
+
+1. AUTOSTART
+- Background agent starts with Windows through Task Scheduler.
+- UI does not start automatically. Open it only when needed.
+
+2. OPEN UI
+- Run NoGameTrackerUI.exe
+or
+- Run app.py
+
+3. WHAT TO WATCH
+- Agent should say: Running
+- Active game should update automatically
+- Current games appear in the Dashboard table
+
+4. MONEY RULES
+- Foreground: 120 EUR/hour (60 each)
+- Background: 12 EUR/hour
+
+5. TELEGRAM COMMANDS
+- /status
+- /today
+- /week
+- /pause
+- /resume
+- /recent
+
+6. IF EXCEL IS OPEN
+- SQLite still keeps the real data
+- Use the Export CSV button when you want a fresh CSV file
+
+7. IF DETECTION IS WRONG
+- Open Game Editor
+- Fix process name first
+- Then fix title keywords only if needed
+
+8. IMPORTANT FILES
+- tracker.db = main database
+- game_log.csv = export file
+- config.json = settings
+- BOT_GUIDE.txt = full explanation

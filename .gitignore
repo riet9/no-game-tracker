@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+config.json
+tracker.log
+game_log.csv
+state.json
+control.json
+active_sessions.json
+tracker.db
+agent.lock
+build/
+dist/
+*.spec

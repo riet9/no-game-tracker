@@ -1,0 +1,229 @@
+NO GAME TRACKER - BOT AND APP GUIDE
+
+1. WHAT IS WHAT
+
+agent.py
+- Background agent.
+- Starts with Windows.
+- Tracks games.
+- Sends Telegram messages.
+- Responds to Telegram commands.
+- Saves sessions to SQLite.
+
+app.py
+- Control panel UI.
+- Lets you view status, edit games, see reports, and change settings.
+- Can be opened anytime.
+
+tracker_core.py
+- Shared core logic.
+- Detection rules, Telegram API calls, SQLite, CSV export, config loading.
+
+config.json
+- Main settings file.
+- Stores Telegram token/chat_id, game list, filters, and tracking settings.
+
+tracker.db
+- Main database.
+- Stores finished sessions and event history.
+
+game_log.csv
+- Export file for Excel or manual viewing.
+- Not the main storage anymore.
+
+
+2. HOW THE BOT WORKS
+
+The Telegram bot does 2 things:
+
+A. Sends automatic messages
+- When a game starts
+- When a game becomes foreground
+- When a game moves to background
+- When a game stops
+
+B. Accepts commands from your Telegram chat
+- Only from the configured chat_id
+
+
+3. TELEGRAM COMMANDS
+
+/status
+- Shows agent status
+- Shows active game
+- Shows currently tracked games
+- Shows total running time and penalty
+
+/help
+- Shows the list of available bot commands
+
+/today
+- Shows today's stats
+
+/week
+- Shows this week's stats
+
+/topgames
+- Shows top tracked games from the database
+
+/pause
+- Pauses tracking
+
+/resume
+- Resumes tracking
+
+/recent
+- Shows recent finished sessions
+
+
+4. HOW GAME TRACKING WORKS
+
+The agent checks:
+- running processes
+- active foreground window
+
+Each tracked game can have these states:
+
+running
+- The game process exists
+
+foreground
+- The game is the active window right now
+
+background
+- The game is still running, but another window is active
+
+Important:
+- Several games can be running at once
+- Only one game can be foreground at a time
+
+
+5. HOW GAME DETECTION WORKS
+
+Detection uses:
+- process_names
+- title_keywords
+
+process_names
+- Best and most reliable method
+- Example: isaac-ng.exe
+
+title_keywords
+- Used when process matching is not enough
+- Also useful for launchers like Steam/Epic
+
+excluded_processes
+- Prevent title-based false matches for apps like Explorer, Word, PowerPoint, browser, etc.
+
+excluded_window_keywords
+- Prevent false matches from normal folder/document titles
+
+
+6. HOW DATA FLOWS
+
+Game opens
+-> agent detects process/window
+-> state.json is updated
+-> Telegram event may be sent
+-> live UI updates
+
+Game closes
+-> session is finalized
+-> saved into tracker.db
+-> CSV export may be updated
+-> Telegram stop message may be sent
+
+
+7. WHY SQLITE AND CSV BOTH EXIST
+
+tracker.db
+- Main source of truth
+- Better for reports, charts, history, commands
+- Safe for repeated reads/writes
+
+game_log.csv
+- Export for Excel
+- Convenient for manual review
+- Can be locked by Excel
+
+If CSV is locked:
+- Agent should continue working
+- SQLite still keeps the real data
+
+
+8. WHAT THE UI DOES
+
+Dashboard
+- Current status
+- Current tracked games
+- Overall totals
+
+Settings
+- Telegram settings
+- Poll interval
+- Excluded apps
+- Filters
+
+Game Editor
+- Add/edit/remove games without manual JSON editing
+
+Reports
+- Recent sessions
+- Daily chart
+
+Logs
+- Runtime log preview
+
+
+9. MAIN SETTINGS IN config.json
+
+telegram.bot_token
+- Telegram bot token from BotFather
+
+telegram.chat_id
+- Telegram chat where bot sends messages and accepts commands
+
+settings.poll_interval_seconds
+- How often the agent checks the system
+- Lower = faster detection, slightly more load
+
+settings.close_grace_polls
+- How many missed polls before a game is treated as closed
+
+settings.track_background_games
+- Count game when it is running in background
+
+settings.track_foreground_games
+- Count game when it is active in foreground
+
+settings.telegram_on_state_change
+- Send Telegram automatic notifications
+
+settings.telegram_commands_enabled
+- Allow Telegram commands like /status
+
+
+10. IMPORTANT NOTES
+
+- tracker.db is more important than CSV
+- process_names are more reliable than title_keywords
+- avoid very broad title keywords like "game"
+- Money rules:
+- foreground time = full rate (120 EUR/hour = 60 each)
+- background time = one tenth of the full rate (12 EUR/hour)
+- if Telegram token was exposed, revoke it in BotFather and create a new one
+- if detection is wrong, first fix process_names for that game
+
+
+11. QUICK TEST
+
+1. Start agent
+2. Open UI
+3. Start a game
+4. Wait 10-15 seconds
+5. Check if it appears as foreground
+6. Alt-tab away
+7. Check if it becomes background
+8. Close the game
+9. Wait for close grace
+10. Check if session appears in reports and Telegram
